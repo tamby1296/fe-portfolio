@@ -3,9 +3,9 @@ import Navigation from "./components/Navigation"
 
 function App() {
   return (
-    <main className="flex">
+    <main className="flex bg-kAppGrey">
       <Navigation />
-      <section>
+      <section className="flex-grow [&>div]:h-full">
         <Outlet />
       </section>
     </main>

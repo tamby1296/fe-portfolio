@@ -24,8 +24,8 @@ export default {
     colors: {
       kAppWhite: "#FFFFFF",
       kAppYellow: "#EAE112",
-      kAppBlack: "#141313",
-      kAppGrey: "#1E1E1E",
+      kAppBlack: "#0E0E0E",
+      kAppGrey: "#141313",
     },
     extend: {
       fontFamily: {
