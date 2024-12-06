@@ -1,8 +1,14 @@
+import { Outlet } from "react-router-dom"
+import Navigation from "./components/Navigation"
 
 function App() {
-
   return (
-    <h1 className='text-center'>Vite + React</h1>
+    <main className="flex">
+      <Navigation />
+      <section>
+        <Outlet />
+      </section>
+    </main>
   )
 }
 
