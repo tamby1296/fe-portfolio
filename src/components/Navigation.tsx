@@ -13,8 +13,8 @@ const Navigation = () => {
   const { pathname } = useLocation();
 
   return (
-    <nav className="flex flex-col justify-between items-center h-[100vh] w-1/4 py-4 border-solid border border-white">
-      <h2 className="text-center text-[3.438rem] text-kAppYellow">TITLE</h2>
+    <nav className="flex flex-col justify-between items-center h-[100vh] w-1/4 flex-shrink-0 py-4 bg-kAppBlack">
+      <h2 className="text-center text-[3.438rem] text-kAppYellow">TIA</h2>
       <ul className="flex flex-col gap-[30px]">
         <li>
           <Link to="/" className={NavigationVariant({ active: pathname === '/' })}>
@@ -37,7 +37,7 @@ const Navigation = () => {
           </Link>
         </li>
       </ul>
-      <p className="text-base font-extralight">Copyright</p>
+      <p className="text-xs font-extralight">&copy; 2024 Tamby Razafindralambo</p>
     </nav>
   )
 }
