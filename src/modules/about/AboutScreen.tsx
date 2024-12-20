@@ -1,6 +1,6 @@
 const AboutScreen = () => {
   return (
-    <div className="pt-20 px-[10%]">
+    <div className="py-20 px-[10%]">
       <div className="text-center mx-auto mb-10">
         <h1 className="text-4xl">ABOUT ME</h1>
         <p className="text-xl font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi consequatur at iste? Natus quas quam aperiam consectetur nihil laudantium ut ad suscipit veritatis vero aliquam maxime odit, recusandae accusantium rerum.</p>
@@ -20,7 +20,7 @@ const AboutScreen = () => {
       </div>
       <div className="">
         <h3 className="text-2xl text-kAppYellow">My Stack</h3>
-        <div className="flex gap-10 pt-5">
+        <div className="flex flex-wrap gap-10 pt-5">
           <img src="./img/html.png" alt="" />
           <img src="./img/css.png" alt="" />
           <img src="./img/javaScript.png" alt="" />
