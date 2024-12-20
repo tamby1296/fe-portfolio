@@ -5,7 +5,7 @@ function App() {
   return (
     <main className="flex bg-kAppGrey">
       <Navigation />
-      <section className="flex-grow [&>div]:h-full">
+      <section className="flex-grow [&>div]:h-full min-h-[100vh]">
         <Outlet />
       </section>
     </main>
