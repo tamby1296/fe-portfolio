@@ -6,8 +6,8 @@ const AboutScreen = () => {
         <p className="text-xl font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi consequatur at iste? Natus quas quam aperiam consectetur nihil laudantium ut ad suscipit veritatis vero aliquam maxime odit, recusandae accusantium rerum.</p>
       </div>
       <div className="flex flex-col lg:flex-row mb-14">
-        <img src="https://placehold.co/403x467" alt="my-img" className="mx-12 rounded-xl flex-grow" />
-        <div className="flex flex-col justify-center items-start w-full lg:w-4/6 pt-10 lg:pt-0">
+        <img src="https://placehold.co/403x467" alt="my-img" className="mx-12 rounded-xl flex-grow flex-shrink" />
+        <div className="flex flex-col justify-center items-start w-full lg:w-4/6 pt-10 lg:pt-0 flex-shrink">
           <h2 className="text-2xl text-kAppYellow uppercase mb-5">Tamby Razafindralambo</h2>
           <h3 className="text-xl uppercase mb-4">Web Developer</h3>
           <p className="text-lg font-light mb-10">

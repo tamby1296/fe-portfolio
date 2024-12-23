@@ -83,3 +83,15 @@
   font-style: normal;
   font-display: swap;
 }
+
+input, textarea {
+  border-radius: 10px;
+  border: 1px solid #EAE112;
+  background: transparent;
+  padding: 0.85rem;
+  width: 100%;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+}
