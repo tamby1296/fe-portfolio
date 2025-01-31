@@ -1,4 +1,13 @@
 import { PortfolioCard } from '../../components/PortfolioCard'
+import eCommerceCover from "../../assets/e-commerce.jpg";
+
+const PORTFOLIO = [
+  {
+    "img": eCommerceCover,
+    "title": "E-Commerce",
+    "link": "https://fe-e-commerce.web.app/",
+  }
+]
 
 const PortfolioScreen = () => {
   return (
@@ -9,7 +18,7 @@ const PortfolioScreen = () => {
       </div>
       <div className="flex flex-col lg:flex-row lg:flex-wrap">
       {
-        Array.from({ length: 6 }).map( (_, index) => <PortfolioCard key={index} />)
+        PORTFOLIO.map( (p, index) => <PortfolioCard key={index} {...p}/>)
       }
       </div>
     </div>
