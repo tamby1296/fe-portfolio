@@ -5,7 +5,6 @@ const PORTFOLIO = [
   {
     "img": eCommerceCover,
     "title": "E-Commerce",
-    "description": "UI template for an e-commerce website. Including; Home, Products list, Product detail and Cart pages",
     "link": "https://fe-e-commerce.web.app/",
   }
 ]
@@ -15,17 +14,11 @@ const PortfolioScreen = () => {
     <div className="py-20 px-[10%]">
       <div className="text-center mx-auto mb-10">
         <h1 className="text-4xl">PORTFOLIO</h1>
-        <p className="text-xl font-light w-3/4 mx-auto">
-        I've worked closely with designers to translate Figma mockups into pixel-perfect interfaces and collaborated with back-end teams to integrate RESTful and GraphQL APIs. Projects include e-commerce platforms, financial dashboards, internal tools, and mobile-first web apps—each demanding a strong focus on user experience, code quality, and maintainability.
-        </p>
-        <br />
-        <p className="text-xl font-light w-3/4 mx-auto">
-        Below is an highlight of a few projects and past experience:
-        </p>
+        <p className="text-xl font-light w-3/4 mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda amet laboriosam ipsa quibusdam fuga architecto perspiciatis voluptas, iste animi quo enim recusandae provident possimus corporis repellat qui. Eligendi, sit quibusdam? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque labore aperiam excepturi dignissimos officia ipsa. Iure aut illo rerum ducimus maiores, dolore omnis, facere itaque odit magni esse dolores sequi!</p>
       </div>
       <div className="flex flex-col lg:flex-row lg:flex-wrap">
       {
-        PORTFOLIO.map( (p, i) => <PortfolioCard key={`${p.title}-${i}`} {...p}/>)
+        PORTFOLIO.map( (p, index) => <PortfolioCard key={index} {...p}/>)
       }
       </div>
     </div>
