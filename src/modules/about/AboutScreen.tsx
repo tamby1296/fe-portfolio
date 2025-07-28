@@ -1,6 +1,6 @@
 const AboutScreen = () => {
   return (
-    <div className="py-20 px-[10%]">
+    <div className="px-[10%]">
       <div className="text-center mx-auto mb-10">
         <h1 className="text-4xl">ABOUT ME</h1>
         <p className="text-xl font-light">
