@@ -46,7 +46,7 @@ const AboutScreen = () => {
       </div>
       <div className="">
         <h3 className="text-2xl text-kAppYellow">My Stack</h3>
-        <div className="flex flex-wrap gap-10 pt-5 [&>img]:max-w-[70px]">
+        <div className="flex flex-wrap gap-10 pt-5 [&>img]:max-w-[70px] justify-evenly lg:justify-start">
           <img src="./img/html.png" alt="html-img" />
           <img src="./img/css.png" alt="css-img" />
           <img src="./img/javaScript.png" alt="js-img" />
