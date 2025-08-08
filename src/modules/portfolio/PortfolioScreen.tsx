@@ -1,13 +1,19 @@
 import { PortfolioCard } from "../../components/PortfolioCard";
 import eCommerceCover from "../../assets/e-commerce.jpg";
+import ePOSCover from "../../assets/food-epos.jpg";
 
 const PORTFOLIO = [
   {
     img: eCommerceCover,
     title: "E-Commerce",
-    description:
-      "UI template for an e-commerce website. Including; Home, Products list, Product detail and Cart pages",
+    description: "UI template for an e-commerce website.",
     link: "https://fe-e-commerce.web.app/",
+  },
+  {
+    img: ePOSCover,
+    title: "EPOS",
+    description: "UI template for an restaurant EPOS system.",
+    link: "https://food-epos.web.app/",
   },
 ];
 
