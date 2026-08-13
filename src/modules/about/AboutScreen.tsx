@@ -13,7 +13,7 @@ const AboutScreen = () => {
       </div>
       <div className="flex flex-col lg:flex-row mb-14 items-start">
         <img
-          src="./img/pp.jpg"
+          src="/img/pp.jpg"
           alt="my-img"
           className="lg:mx-12 rounded-xl flex-grow flex-shrink w-full lg:max-w-[400px]"
         />
@@ -47,13 +47,13 @@ const AboutScreen = () => {
       <div className="">
         <h3 className="text-2xl text-kAppYellow">My Stack</h3>
         <div className="flex flex-wrap gap-10 pt-5 [&>img]:max-w-[70px] justify-evenly lg:justify-start">
-          <img src="./img/html.png" alt="html-img" />
-          <img src="./img/css.png" alt="css-img" />
-          <img src="./img/javaScript.png" alt="js-img" />
-          <img src="./img/typescript.png" alt="ts-img" />
-          <img src="./img/reactJS.png" alt="reactJs-img" />
-          <img src="./img/next.png" alt="next-img" />
-          <img src="./img/tailwind.png" alt="tailwind-img" />
+          <img src="/img/html.png" alt="html-img" />
+          <img src="/img/css.png" alt="css-img" />
+          <img src="/img/javaScript.png" alt="js-img" />
+          <img src="/img/typescript.png" alt="ts-img" />
+          <img src="/img/reactJS.png" alt="reactJs-img" />
+          <img src="/img/next.png" alt="next-img" />
+          <img src="/img/tailwind.png" alt="tailwind-img" />
         </div>
       </div>
     </div>
