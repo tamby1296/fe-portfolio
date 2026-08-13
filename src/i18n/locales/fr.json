@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "portfolio": "Portfolio",
+    "contact": "Contact",
+    "switchLanguage": "Changer de langue",
+    "copyright": "© 2024 Tamby Razafindralambo"
+  },
+  "home": {
+    "greeting": "Bonjour, je suis",
+    "name": "Tamby Razafindralambo",
+    "role": "Je suis Ingénieur Front-End"
+  },
+  "about": {
+    "title": "À propos de moi",
+    "intro": "Je suis un Ingénieur Front-End passionné et rigoureux, basé à Beau Bassin, à Maurice. Fort d'une solide expérience en développement web et d'un diplôme en Génie Logiciel de l'Université de Maurice (mention très bien), j'aime concevoir des expériences web fluides et centrées sur l'utilisateur.",
+    "name": "Fanasina Tamby Tia Razafindralambo",
+    "role": "Ingénieur Front-End",
+    "bio": "Ma devise est « encourager, responsabiliser et élever ». Je crois au pouvoir du retour d'expérience, de la collaboration et de l'apprentissage continu pour progresser en tant que développeur et coéquipier. Qu'il s'agisse d'affiner des interactions d'interface, d'optimiser les performances ou d'accompagner mes pairs, j'apporte un état d'esprit engagé et tourné vers l'équipe dans tout ce que je fais.",
+    "bioCta": "Construisons quelque chose de significatif ensemble !",
+    "downloadResume": "Télécharger mon CV",
+    "stackTitle": "Mes compétences techniques"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "intro1": "J'ai travaillé en étroite collaboration avec des designers pour transformer des maquettes Figma en interfaces au pixel près, et avec des équipes back-end pour intégrer des API RESTful et GraphQL. Mes projets incluent des plateformes e-commerce, des tableaux de bord financiers, des outils internes et des applications web mobile-first, chacun exigeant une attention particulière à l'expérience utilisateur, la qualité du code et la maintenabilité.",
+    "intro2": "Voici un aperçu de quelques projets et expériences passées :",
+    "items": {
+      "eCommerce": {
+        "title": "E-Commerce",
+        "description": "Modèle d'interface pour un site e-commerce."
+      },
+      "epos": {
+        "title": "EPOS",
+        "description": "Modèle d'interface pour un système de caisse (EPOS) de restaurant."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda amet laboriosam ipsa quibusdam fuga architecto perspiciatis voluptas, iste animi quo enim recusandae provident possimus corporis repellat qui. Eligendi, sit quibusdam?",
+    "namePlaceholder": "Nom",
+    "emailPlaceholder": "E-mail",
+    "subjectPlaceholder": "Objet",
+    "messagePlaceholder": "Message",
+    "submit": "Envoyer"
+  },
+  "error": {
+    "title": "Erreur 404",
+    "message": "Une erreur est survenue",
+    "backHome": "Retour à l'accueil"
+  }
+}

@@ -1,6 +1,9 @@
+import { useTranslation } from "react-i18next";
+
 const CONTACT_EMAIL = "rftt_tamby@yahoo.com";
 
 const ContactScreen = () => {
+  const { t } = useTranslation();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,17 +25,17 @@ const ContactScreen = () => {
   return (
     <div className="flex flex-col justify-center px-[10%]">
       <div className="text-center mx-auto mb-10">
-        <h1 className="text-4xl">CONTACT</h1>
-        <p className="text-xl font-light w-3/4 mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda amet laboriosam ipsa quibusdam fuga architecto perspiciatis voluptas, iste animi quo enim recusandae provident possimus corporis repellat qui. Eligendi, sit quibusdam?</p>
+        <h1 className="text-4xl uppercase">{t("contact.title")}</h1>
+        <p className="text-xl font-light w-3/4 mx-auto">{t("contact.intro")}</p>
       </div>
       <form className="w-3/4 mx-auto flex flex-col items-center gap-5" onSubmit={handleSubmit}>
         <div className="flex justify-between gap-5 w-full">
-          <input type="text" placeholder="Name" name="name" />
-          <input type="email" placeholder="Email" name="email" />
+          <input type="text" placeholder={t("contact.namePlaceholder")} name="name" />
+          <input type="email" placeholder={t("contact.emailPlaceholder")} name="email" />
         </div>
-        <input type="text" placeholder="Subject" name="subject" />
-        <textarea placeholder="Message" rows={5} name="message" />
-        <button type="submit" className="text-xl text-kAppBlack bg-kAppYellow px-12 py-2 rounded-lg">Submit</button>
+        <input type="text" placeholder={t("contact.subjectPlaceholder")} name="subject" />
+        <textarea placeholder={t("contact.messagePlaceholder")} rows={5} name="message" />
+        <button type="submit" className="text-xl text-kAppBlack bg-kAppYellow px-12 py-2 rounded-lg">{t("contact.submit")}</button>
       </form>
     </div>
   )

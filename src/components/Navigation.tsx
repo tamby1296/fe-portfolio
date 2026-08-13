@@ -1,7 +1,14 @@
 import { cva } from "class-variance-authority";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { useState } from "react";
+import { SUPPORTED_LANGUAGES, type SupportedLanguage } from "../i18n";
+
+const LANGUAGE_LABELS: Record<SupportedLanguage, string> = {
+  en: "EN",
+  fr: "FR",
+};
 
 const NavigationVariant = cva(
   "w-full inline-block text-xl text-center uppercase",
@@ -52,6 +59,7 @@ const SOCIAL_LINKS = [
 
 const Navigation = () => {
   const { pathname } = useLocation();
+  const { t, i18n } = useTranslation();
   const [menuToggle, setMenuToggle] = useState(false);
 
   return (
@@ -78,7 +86,7 @@ const Navigation = () => {
               className={NavigationVariant({ active: pathname === "/" })}
               onClick={() => setMenuToggle(false)}
             >
-              Home
+              {t("nav.home")}
             </Link>
           </li>
           <li>
@@ -89,7 +97,7 @@ const Navigation = () => {
               })}
               onClick={() => setMenuToggle(false)}
             >
-              About me
+              {t("nav.about")}
             </Link>
           </li>
           <li>
@@ -100,7 +108,7 @@ const Navigation = () => {
               })}
               onClick={() => setMenuToggle(false)}
             >
-              Portfolio
+              {t("nav.portfolio")}
             </Link>
           </li>
           <li>
@@ -109,11 +117,32 @@ const Navigation = () => {
               className={NavigationVariant({ active: pathname === "/contact" })}
               onClick={() => setMenuToggle(false)}
             >
-              Contact
+              {t("nav.contact")}
             </Link>
           </li>
         </ul>
         <div className="flex flex-col items-center gap-4">
+          <div
+            className="flex gap-2 text-sm"
+            role="group"
+            aria-label={t("nav.switchLanguage")}
+          >
+            {SUPPORTED_LANGUAGES.map((lng) => (
+              <button
+                key={lng}
+                type="button"
+                onClick={() => i18n.changeLanguage(lng)}
+                aria-pressed={i18n.resolvedLanguage === lng}
+                className={
+                  i18n.resolvedLanguage === lng
+                    ? "text-kAppYellow underline underline-offset-4"
+                    : "text-kAppWhite opacity-60 hover:opacity-100 transition-opacity"
+                }
+              >
+                {LANGUAGE_LABELS[lng]}
+              </button>
+            ))}
+          </div>
           <div className="flex gap-5">
             {SOCIAL_LINKS.map(({ label, href, icon }) => (
               <a
@@ -134,9 +163,7 @@ const Navigation = () => {
               </a>
             ))}
           </div>
-          <p className="text-xs font-extralight">
-            &copy; 2024 Tamby Razafindralambo
-          </p>
+          <p className="text-xs font-extralight">{t("nav.copyright")}</p>
         </div>
       </nav>
     </>
