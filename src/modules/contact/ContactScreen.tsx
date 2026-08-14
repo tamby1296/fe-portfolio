@@ -29,6 +29,7 @@ const ContactScreen = () => {
       setStatus("success");
       setShowToast(true);
       form.reset();
+      setWasValidated(false);
     } catch (err) {
       console.error(err);
       setStatus("error");
