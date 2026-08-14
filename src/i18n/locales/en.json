@@ -44,7 +44,10 @@
     "emailPlaceholder": "Email",
     "subjectPlaceholder": "Subject",
     "messagePlaceholder": "Message",
-    "submit": "Submit"
+    "submit": "Submit",
+    "sending": "Sending...",
+    "success": "Thanks for your message! I'll get back to you soon.",
+    "error": "Something went wrong. Please try again or email me directly."
   },
   "error": {
     "title": "404 error",

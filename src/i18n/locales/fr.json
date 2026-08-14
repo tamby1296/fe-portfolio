@@ -44,7 +44,10 @@
     "emailPlaceholder": "E-mail",
     "subjectPlaceholder": "Objet",
     "messagePlaceholder": "Message",
-    "submit": "Envoyer"
+    "submit": "Envoyer",
+    "sending": "Envoi en cours...",
+    "success": "Merci pour votre message ! Je vous répondrai bientôt.",
+    "error": "Une erreur est survenue. Veuillez réessayer ou m'écrire directement."
   },
   "error": {
     "title": "Erreur 404",

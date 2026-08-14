@@ -1,25 +1,31 @@
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { useTranslation } from "react-i18next";
 
-const CONTACT_EMAIL = "rftt_tamby@yahoo.com";
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+type Status = "idle" | "sending" | "success" | "error";
 
 const ContactScreen = () => {
   const { t } = useTranslation();
+  const [status, setStatus] = useState<Status>("idle");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
 
-    const formData = new FormData(e.currentTarget);
-    const name = formData.get("name")?.toString() ?? "";
-    const email = formData.get("email")?.toString() ?? "";
-    const subject = formData.get("subject")?.toString() ?? "";
-    const message = formData.get("message")?.toString() ?? "";
+    setStatus("sending");
 
-    const body = `${message}\n\n— ${name} (${email})`;
-    const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-
-    window.location.href = mailto;
+    try {
+      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form, { publicKey: PUBLIC_KEY });
+      setStatus("success");
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+    }
   }
 
   return (
@@ -30,12 +36,20 @@ const ContactScreen = () => {
       </div>
       <form className="w-3/4 mx-auto flex flex-col items-center gap-5" onSubmit={handleSubmit}>
         <div className="flex justify-between gap-5 w-full">
-          <input type="text" placeholder={t("contact.namePlaceholder")} name="name" />
-          <input type="email" placeholder={t("contact.emailPlaceholder")} name="email" />
+          <input type="text" placeholder={t("contact.namePlaceholder")} name="name" required />
+          <input type="email" placeholder={t("contact.emailPlaceholder")} name="email" required />
         </div>
-        <input type="text" placeholder={t("contact.subjectPlaceholder")} name="subject" />
-        <textarea placeholder={t("contact.messagePlaceholder")} rows={5} name="message" />
-        <button type="submit" className="text-xl text-kAppBlack bg-kAppYellow px-12 py-2 rounded-lg">{t("contact.submit")}</button>
+        <input type="text" placeholder={t("contact.subjectPlaceholder")} name="subject" required />
+        <textarea placeholder={t("contact.messagePlaceholder")} rows={5} name="message" required />
+        <button
+          type="submit"
+          disabled={status === "sending"}
+          className="text-xl text-kAppBlack bg-kAppYellow px-12 py-2 rounded-lg disabled:opacity-50"
+        >
+          {status === "sending" ? t("contact.sending") : t("contact.submit")}
+        </button>
+        {status === "success" && <p className="text-green-600">{t("contact.success")}</p>}
+        {status === "error" && <p className="text-red-600">{t("contact.error")}</p>}
       </form>
     </div>
   )
