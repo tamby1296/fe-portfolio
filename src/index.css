@@ -82,7 +82,3 @@ input, textarea {
 input:focus, textarea:focus {
   outline: none;
 }
-
-form.was-validated :invalid {
-  border-color: #dc2626;
-}

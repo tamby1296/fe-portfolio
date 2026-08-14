@@ -47,7 +47,11 @@
     "submit": "Envoyer",
     "sending": "Envoi en cours...",
     "success": "Merci pour votre message ! Je vous répondrai bientôt.",
-    "error": "Une erreur est survenue. Veuillez réessayer ou m'écrire directement."
+    "error": "Une erreur est survenue. Veuillez réessayer ou m'écrire directement.",
+    "errors": {
+      "required": "Ce champ est obligatoire.",
+      "emailInvalid": "Veuillez saisir une adresse e-mail valide."
+    }
   },
   "error": {
     "title": "Erreur 404",

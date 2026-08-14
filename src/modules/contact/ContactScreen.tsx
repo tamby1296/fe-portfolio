@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
+import * as Yup from "yup";
+import clsx from "clsx";
 import emailjs from "@emailjs/browser";
 import { useTranslation } from "react-i18next";
 import Toast from "../../components/Toast";
@@ -7,34 +10,44 @@ const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-type Status = "idle" | "sending" | "success" | "error";
+interface ContactFormValues {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+const initialValues: ContactFormValues = { name: "", email: "", subject: "", message: "" };
 
 const ContactScreen = () => {
   const { t } = useTranslation();
-  const [status, setStatus] = useState<Status>("idle");
   const [showToast, setShowToast] = useState(false);
-  const [wasValidated, setWasValidated] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
-  const handleInvalid = () => setWasValidated(true);
+  const validationSchema = Yup.object({
+    name: Yup.string().required(t("contact.errors.required")),
+    email: Yup.string().email(t("contact.errors.emailInvalid")).required(t("contact.errors.required")),
+    subject: Yup.string().required(t("contact.errors.required")),
+    message: Yup.string().required(t("contact.errors.required")),
+  });
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-
-    setWasValidated(true);
-    setStatus("sending");
+  const handleSubmit = async (
+    values: ContactFormValues,
+    { resetForm, setSubmitting }: FormikHelpers<ContactFormValues>
+  ) => {
+    setSubmitError(false);
 
     try {
-      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form, { publicKey: PUBLIC_KEY });
-      setStatus("success");
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, { ...values }, { publicKey: PUBLIC_KEY });
       setShowToast(true);
-      form.reset();
-      setWasValidated(false);
+      resetForm();
     } catch (err) {
       console.error(err);
-      setStatus("error");
+      setSubmitError(true);
+    } finally {
+      setSubmitting(false);
     }
-  }
+  };
 
   return (
     <div className="flex flex-col justify-center px-[10%]">
@@ -42,26 +55,59 @@ const ContactScreen = () => {
         <h1 className="text-4xl uppercase">{t("contact.title")}</h1>
         <p className="text-xl font-light w-3/4 mx-auto">{t("contact.intro")}</p>
       </div>
-      <form
-        className={`w-3/4 mx-auto flex flex-col items-center gap-5${wasValidated ? " was-validated" : ""}`}
-        onSubmit={handleSubmit}
-        onInvalidCapture={handleInvalid}
-      >
-        <div className="flex justify-between gap-5 w-full">
-          <input type="text" placeholder={t("contact.namePlaceholder")} name="name" required />
-          <input type="email" placeholder={t("contact.emailPlaceholder")} name="email" required />
-        </div>
-        <input type="text" placeholder={t("contact.subjectPlaceholder")} name="subject" required />
-        <textarea placeholder={t("contact.messagePlaceholder")} rows={5} name="message" required />
-        <button
-          type="submit"
-          disabled={status === "sending"}
-          className="text-xl text-kAppBlack bg-kAppYellow px-12 py-2 rounded-lg disabled:opacity-50"
-        >
-          {status === "sending" ? t("contact.sending") : t("contact.submit")}
-        </button>
-        {status === "error" && <p className="text-red-600">{t("contact.error")}</p>}
-      </form>
+      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+        {({ isSubmitting, touched, errors }) => (
+          <Form className="w-3/4 mx-auto flex flex-col items-center gap-5" noValidate>
+            <div className="flex justify-between gap-5 w-full">
+              <div className="w-full">
+                <Field
+                  type="text"
+                  name="name"
+                  placeholder={t("contact.namePlaceholder")}
+                  className={clsx(touched.name && errors.name && "border-kAppRed")}
+                />
+                <ErrorMessage name="name" component="p" className="text-kAppRed text-sm mt-1" />
+              </div>
+              <div className="w-full">
+                <Field
+                  type="email"
+                  name="email"
+                  placeholder={t("contact.emailPlaceholder")}
+                  className={clsx(touched.email && errors.email && "border-kAppRed")}
+                />
+                <ErrorMessage name="email" component="p" className="text-kAppRed text-sm mt-1" />
+              </div>
+            </div>
+            <div className="w-full">
+              <Field
+                type="text"
+                name="subject"
+                placeholder={t("contact.subjectPlaceholder")}
+                className={clsx(touched.subject && errors.subject && "border-kAppRed")}
+              />
+              <ErrorMessage name="subject" component="p" className="text-kAppRed text-sm mt-1" />
+            </div>
+            <div className="w-full">
+              <Field
+                as="textarea"
+                name="message"
+                rows={5}
+                placeholder={t("contact.messagePlaceholder")}
+                className={clsx(touched.message && errors.message && "border-kAppRed")}
+              />
+              <ErrorMessage name="message" component="p" className="text-kAppRed text-sm mt-1" />
+            </div>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="text-xl text-kAppBlack bg-kAppYellow px-12 py-2 rounded-lg disabled:opacity-50"
+            >
+              {isSubmitting ? t("contact.sending") : t("contact.submit")}
+            </button>
+            {submitError && <p className="text-kAppRed">{t("contact.error")}</p>}
+          </Form>
+        )}
+      </Formik>
       <Toast
         message={t("contact.success")}
         show={showToast}
